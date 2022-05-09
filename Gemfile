@@ -11,9 +11,6 @@ gem "minitest", "~> 5.0"
 
 gem "rubocop", "~> 1.21"
 
-gem "minitest-power_assert"
-=begin
 group :test do
   gem "minitest-power_assert"
 end
-=end

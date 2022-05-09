@@ -3,13 +3,22 @@
 require_relative "./../test_helper"
 
 class TestHexletCode < Minitest::Test
-=begin
-  def test_that_it_has_a_version_number
-    refute_nil ::HexletCode::VERSION
+  User = Struct.new(:name, :job, keyword_init: true)
+  def setup
+    @user = User.new name: "rob"
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_form_for
+    expected = "<form action=\"#\" method=\"post\">\n</form>"
+    form = HexletCode.form_for @user do |f|
+    end
+    assert { form == expected }
   end
-=end
+
+  def test_form_for_with_url
+    expected = "<form action=\"/users\" method=\"post\">\n</form>"
+    form = HexletCode.form_for @user, url: "/users" do |f|
+    end
+    assert { form == expected }
+  end
 end

@@ -2,7 +2,7 @@
 
 [![Actions Status](https://github.com/kalash-job/rails-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/kalash-job/rails-project-lvl1/actions)
 
-[![Actions Status](https://github.com/kalash-job/rails-project-lvl1/workflows/main/badge.svg)](https://github.com/kalash-job/rails-project-lvl1/actions)
+[![Actions Status](https://github.com/kalash-job/rails-project-lvl1/workflows/Ruby/badge.svg)](https://github.com/kalash-job/rails-project-lvl1/actions)
 
 # HexletCode
 

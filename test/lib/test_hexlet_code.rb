@@ -10,15 +10,13 @@ class TestHexletCode < Minitest::Test
 
   def test_form_for
     expected = "<form action=\"#\" method=\"post\">\n</form>"
-    form = HexletCode.form_for @user do |f|
-    end
+    form = HexletCode.form_for @user
     assert { form == expected }
   end
 
   def test_form_for_with_url
     expected = "<form action=\"/users\" method=\"post\">\n</form>"
-    form = HexletCode.form_for @user, url: "/users" do |f|
-    end
+    form = HexletCode.form_for @user, url: "/users"
     assert { form == expected }
   end
 end

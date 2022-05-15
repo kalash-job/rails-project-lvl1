@@ -21,4 +21,23 @@ class TestHexletCode < Minitest::Test
     form = HexletCode.form_for @user, url: "/users"
     assert { form == expected }
   end
+
+  def test_form_for_with_inputs
+    expected = File.read("#{@fixtures_file_path}form_for_with_inputs.html")
+    form = HexletCode.form_for @user do |f|
+      f.input :name
+      f.input :job, as: :text
+    end
+    assert { form == expected }
+  end
+
+  def test_form_for_incorrect_field
+    assert_raises(HexletCode::NoMethodError) do
+      HexletCode.form_for @user, url: "/users" do |f|
+        f.input :name
+        f.input :job, as: :text
+        f.input :age
+      end
+    end
+  end
 end

@@ -3,19 +3,21 @@
 require_relative "./../test_helper"
 
 class TestHexletCode < Minitest::Test
-  User = Struct.new(:name, :job, keyword_init: true)
+  FIXTURES_FILES_PATH = "/../fixtures/files/"
+  User = Struct.new(:name, :job, :gender, keyword_init: true)
   def setup
-    @user = User.new name: "rob"
+    @user = User.new name: "rob", job: "hexlet", gender: "m"
+    @fixtures_file_path = "#{File.dirname(__FILE__)}#{FIXTURES_FILES_PATH}"
   end
 
-  def test_form_for
-    expected = "<form action=\"#\" method=\"post\">\n</form>"
+  def test_form_for_without_url
+    expected = File.read("#{@fixtures_file_path}form_for_without_url.html")
     form = HexletCode.form_for @user
     assert { form == expected }
   end
 
   def test_form_for_with_url
-    expected = "<form action=\"/users\" method=\"post\">\n</form>"
+    expected = File.read("#{@fixtures_file_path}form_for_with_url.html")
     form = HexletCode.form_for @user, url: "/users"
     assert { form == expected }
   end

@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "hexlet_code/version"
-
 module HexletCode
   class Error < StandardError; end
+  autoload(:HexletCode, "./hexlet_code/version.rb")
 
   def self.form_for(user, options = {}, &block)
     url = options.fetch(:url, "#")

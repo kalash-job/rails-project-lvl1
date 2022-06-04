@@ -3,10 +3,13 @@
 require_relative "./../test_helper"
 
 class TestHexletCode < Minitest::Test
+  SELECT_OPTIONS_WITH_VALUES = [["1", "First select"], ["2", "Second select"], ["3", "Third select"]].freeze
+  SELECT_OPTIONS = %w[m f].freeze
   FIXTURES_FILES_PATH = "/../fixtures/files/"
-  User = Struct.new(:name, :job, :gender, keyword_init: true)
+  User = Struct.new(:name, :job, :gender, :hobby, keyword_init: true)
+
   def setup
-    @user = User.new name: "rob", job: "hexlet", gender: "m"
+    @user = User.new name: "rob", job: "hexlet", gender: ["m"], hobby: %w[2 3]
     @fixtures_file_path = "#{File.dirname(__FILE__)}#{FIXTURES_FILES_PATH}"
   end
 
@@ -22,17 +25,35 @@ class TestHexletCode < Minitest::Test
     assert { form == expected }
   end
 
-  def test_form_for_with_inputs
-    expected = File.read("#{@fixtures_file_path}form_for_with_inputs.html")
+  def test_form_for_input_type_text
+    expected = File.read("#{@fixtures_file_path}form_for_with_inputs_type_text.html")
     form = HexletCode.form_for @user do |f|
       f.input :name
-      f.input :job, as: :text
+    end
+    assert { form == expected }
+  end
+
+  def test_form_for_input_textarea
+    expected = File.read("#{@fixtures_file_path}form_for_with_inputs_textarea.html")
+    form = HexletCode.form_for @user do |f|
+      f.input :name
+      f.input :job, as: :text, class: "form-control", id: "exampleFormControlTextarea1"
+    end
+    assert { form == expected }
+  end
+
+  def test_form_for_select
+    expected = File.read("#{@fixtures_file_path}form_for_with_inputs_select.html")
+    form = HexletCode.form_for @user do |f|
+      f.input :name
+      f.input :hobby, as: :select, options: SELECT_OPTIONS_WITH_VALUES, multiple: true
+      f.input :gender, as: :select, class: "form-control", options: SELECT_OPTIONS
     end
     assert { form == expected }
   end
 
   def test_form_for_incorrect_field
-    assert_raises(HexletCode::NoMethodError) do
+    assert_raises(NoMethodError) do
       HexletCode.form_for @user, url: "/users" do |f|
         f.input :name
         f.input :job, as: :text

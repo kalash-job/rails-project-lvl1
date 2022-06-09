@@ -27,6 +27,7 @@ How to create form with input type: text and with textarea (default size is cols
     <%= HexletCode.form_for @user do |f| %>
       <%= f.input :name %>
       <%= f.input :job, as: :text, class: "form-control", id: "exampleFormControlTextarea1" %>
+      <%= f.submit %>
     <%= end %>
 
 As a result we have such html code:
@@ -34,14 +35,16 @@ As a result we have such html code:
     <form action="#" method="post">
       <input name="name" type="text" value="rob">
       <textarea cols="20" rows="40" name="job" class="form-control" id="exampleFormControlTextarea1">hexlet</textarea>
+      <input name="commit" type="submit" value="Save">
     </form>
 
-How to create form with input type: text and two selects (the first one is with multiple select ):
+How to create form with input type: text and two selects (the first one is with multiple select):
 
     <%= HexletCode.form_for @user, url: "/users" do |f| %>
       <%= f.input :name %>
       <%= f.input :hobby, as: :select, options: [["1", "First select"], ["2", "Second select"], ["3", "Third select"]], multiple: true %>
       <%= f.input :gender, as: :select, class: "form-control", options: %w[m f] %>
+      <%= f.submit name: "sending", value: "Send" %>
     <%= end %>
 
 As a result we have such html code with one input and two selects:
@@ -57,6 +60,7 @@ As a result we have such html code with one input and two selects:
         <option selected value="m">m</option>
         <option value="f">f</option>
       </select>
+      <input name="sending" type="submit" value="Send">
     </form>
 
 ## Development

@@ -38,6 +38,7 @@ class TestHexletCode < Minitest::Test
     form = HexletCode.form_for @user do |f|
       f.input :name
       f.input :job, as: :text, class: "form-control", id: "exampleFormControlTextarea1"
+      f.submit
     end
     assert { form == expected }
   end
@@ -48,7 +49,7 @@ class TestHexletCode < Minitest::Test
       f.input :name
       f.input :hobby, as: :select, options: SELECT_OPTIONS_WITH_VALUES, multiple: true
       f.input :gender, as: :select, class: "form-control", options: SELECT_OPTIONS
-      f.submit
+      f.submit name: "sending", value: "Send"
     end
     assert { form == expected }
   end
@@ -59,7 +60,6 @@ class TestHexletCode < Minitest::Test
         f.input :name
         f.input :job, as: :text
         f.input :age
-        f.submit name: "sending", value: "Send"
       end
     end
   end

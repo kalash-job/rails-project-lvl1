@@ -16,5 +16,12 @@ module HexletCode
       type = "InputTypes::#{options.fetch(:as).capitalize}"
       @form_content << HexletCode.const_get(type).get_input(input_name, @model, options)
     end
+
+    def submit(input_name, options = {})
+      return @form_content << InputTypes::TypeText.get_input(input_name, @model, options) unless options.key?(:as)
+
+      type = "InputTypes::#{options.fetch(:as).capitalize}"
+      @form_content << HexletCode.const_get(type).get_input(input_name, @model, options)
+    end
   end
 end

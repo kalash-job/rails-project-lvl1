@@ -11,6 +11,7 @@ module HexletCode
     end
 
     def input(input_name, options = {})
+      @form_content << InputTypes::Label.get_input(input_name, options)
       return @form_content << InputTypes::TypeText.get_input(input_name, @model, options) unless options.key?(:as)
 
       type = "InputTypes::#{options.fetch(:as).capitalize}"

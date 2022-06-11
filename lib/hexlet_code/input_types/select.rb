@@ -3,11 +3,12 @@
 module HexletCode
   module InputTypes
     class Select
-      DEFAULT_OPTIONS = %i[name as options selected].freeze
+      DEFAULT_OPTIONS = %i[name as options selected id].freeze
 
       def self.get_input(input_name, model, options = {})
         input_options = {}
         input_options[:name] = input_name
+        input_options[:id] = options.key?(:id) ? options.fetch(:id) : input_name
         selected_option = model.public_send(input_name).nil? ? [] : model.public_send(input_name)
         select_options = []
         options.each do |key, value|

@@ -2,7 +2,6 @@
 
 module HexletCode
   class FormContent
-    autoload(:InputTypes, "hexlet_code/input_types.rb")
     attr_reader :model, :form_content
 
     def initialize(form_model)

@@ -4,7 +4,6 @@ module HexletCode
   class FormRenderer
     UNPAIR_TAGS = %w[br hr img input keygen wbr].freeze
     ATTRIBUTES_WITHOUT_VALUES = %i[selected disabled multiple readonly required].freeze
-    autoload(:InputTypes, "input_types.rb")
     attr_reader :model, :form_content
 
     def self.render(tag)

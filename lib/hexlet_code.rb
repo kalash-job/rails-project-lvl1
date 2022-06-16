@@ -5,6 +5,7 @@ module HexletCode
   autoload(:FormContent, "hexlet_code/form_content.rb")
   autoload(:Tag, "hexlet_code/tag.rb")
   autoload(:FormRenderer, "hexlet_code/form_renderer.rb")
+  autoload(:InputTypes, "hexlet_code/input_types.rb")
 
   def self.form_for(form_model, options = {})
     form_options = {}

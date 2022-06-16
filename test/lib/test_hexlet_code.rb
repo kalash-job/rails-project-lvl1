@@ -49,7 +49,7 @@ class TestHexletCode < Minitest::Test
       f.input :name
       f.input :hobby, as: :select, options: SELECT_OPTIONS_WITH_VALUES, multiple: true
       f.input :gender, as: :select, class: "form-control", options: SELECT_OPTIONS
-      f.submit name: "sending", value: "Send"
+      f.submit "sending", { value: "Send" }
     end
     assert { form == expected }
   end

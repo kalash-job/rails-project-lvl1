@@ -2,6 +2,7 @@
 
 module HexletCode
   class FormContent
+    DEFAULT_NAME = "commit"
     attr_reader :model, :form_content
 
     def initialize(form_model)
@@ -17,7 +18,8 @@ module HexletCode
       @form_content << HexletCode.const_get(type).get_input(input_name, @model, options)
     end
 
-    def submit(options = {})
+    def submit(name = DEFAULT_NAME, options = {})
+      options[:name] = name
       @form_content << InputTypes::Submit.get_input(options)
     end
   end

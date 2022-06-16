@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module HexletCode
-  class Error < StandardError; end
   autoload(:HexletCode, "hexlet_code/version.rb")
   autoload(:FormContent, "hexlet_code/form_content.rb")
   autoload(:Tag, "hexlet_code/tag.rb")

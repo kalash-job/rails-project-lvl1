@@ -2,7 +2,7 @@
 
 module HexletCode
   module InputTypes
-    class TypeText
+    class String
       DEFAULT_OPTIONS = %w[name type value id].freeze
 
       def self.get_input(input_name, model, options = {})

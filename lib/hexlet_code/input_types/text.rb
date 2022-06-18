@@ -15,7 +15,7 @@ module HexletCode
           id: options.key?(:id) ? options.fetch(:id) : input_name
         }
         options.each { |key, value| input_options[key] = value unless DEFAULT_OPTIONS.include?(key) }
-        textarea_value = model.public_send(input_name).nil? ? '' : model.public_send(input_name)
+        textarea_value = model.public_send(input_name)
         Tag.build('textarea', input_options) { textarea_value }
       end
     end

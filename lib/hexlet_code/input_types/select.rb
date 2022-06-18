@@ -15,7 +15,7 @@ module HexletCode
           input_options[key] = value unless DEFAULT_OPTIONS.include?(key)
           select_options = get_select_options(value, selected_option) if key == :options
         end
-        Tag.build("select", input_options) { select_options }
+        Tag.build('select', input_options) { select_options }
       end
 
       private_class_method def self.get_select_options(options, selected_option)
@@ -25,7 +25,7 @@ module HexletCode
           options_value, options_body = option.is_a?(Array) ? option : [option, option]
           options_attributes[:selected] = true if selected_option.include?(options_value)
           options_attributes[:value] = options_value
-          options_tags << Tag.build("option", options_attributes) { options_body }
+          options_tags << Tag.build('option', options_attributes) { options_body }
         end
         options_tags
       end

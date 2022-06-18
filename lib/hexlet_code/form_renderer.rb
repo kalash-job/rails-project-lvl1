@@ -7,7 +7,7 @@ module HexletCode
     attr_reader :model, :form_content
 
     def self.render(tag)
-      options_line = tag.key?(:options) ? render_options(tag[:options]) : ""
+      options_line = tag.key?(:options) ? render_options(tag[:options]) : ''
       tag_opening = "<#{tag[:name]}#{options_line}>"
       return tag_opening if UNPAIR_TAGS.include?(tag[:name])
 
@@ -21,7 +21,7 @@ module HexletCode
       options.each_pair do |key, value|
         result_options << (ATTRIBUTES_WITHOUT_VALUES.include?(key) ? key : "#{key}=\"#{value}\"")
       end
-      result_options.empty? ? "" : " #{result_options.join(" ")}"
+      result_options.empty? ? '' : " #{result_options.join(' ')}"
     end
 
     private_class_method def self.render_tag_body(tag_body)

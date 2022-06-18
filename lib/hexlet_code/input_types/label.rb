@@ -7,7 +7,7 @@ module HexletCode
         input_options = {}
         input_options[:for] = options.key?(:id) ? options.fetch(:id) : input_name
         value = input_name.capitalize
-        Tag.build("label", input_options) { value }
+        Tag.build('label', input_options) { value }
       end
     end
   end

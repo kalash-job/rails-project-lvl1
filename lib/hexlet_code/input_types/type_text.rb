@@ -9,10 +9,10 @@ module HexletCode
         input_options = {}
         input_options[:name] = input_name
         input_options[:id] = options.key?(:id) ? options.fetch(:id) : input_name
-        input_options[:type] = "text"
-        input_options[:value] = model.public_send(input_name).nil? ? "" : model.public_send(input_name)
+        input_options[:type] = 'text'
+        input_options[:value] = model.public_send(input_name).nil? ? '' : model.public_send(input_name)
         options.each { |key, value| input_options[key] = value unless DEFAULT_OPTIONS.include?(key) }
-        Tag.build("input", input_options)
+        Tag.build('input', input_options)
       end
     end
   end

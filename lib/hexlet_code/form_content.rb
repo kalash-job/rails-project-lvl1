@@ -2,8 +2,8 @@
 
 module HexletCode
   class FormContent
-    DEFAULT_NAME = "commit"
-    DEFAULT_VALUE = "Save"
+    DEFAULT_NAME = 'commit'
+    DEFAULT_VALUE = 'Save'
     attr_reader :model, :form_content
 
     def initialize(form_model)

@@ -47,7 +47,7 @@ But if you use array of strings, you will get options where every value is equal
       <%= f.input :name %>
       <%= f.input :hobby, as: :select, options: [["1", "First select"], ["2", "Second select"], ["3", "Third select"]], multiple: true %>
       <%= f.input :gender, as: :select, class: "form-control", options: %w[m f] %>
-      <%= f.submit name: "sending", value: "Send" %>
+      <%= f.submit "Send", name: "sending" %>
     <%= end %>
 
 As a result we have such html code with one input and two selects:

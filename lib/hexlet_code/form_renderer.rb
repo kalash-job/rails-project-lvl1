@@ -2,32 +2,23 @@
 
 module HexletCode
   class FormRenderer
-    UNPAIR_TAGS = %w[br hr img input keygen wbr].freeze
-    ATTRIBUTES_WITHOUT_VALUES = %i[selected disabled multiple readonly required].freeze
     attr_reader :model, :form_content
 
-    def self.render(tag)
-      options_line = tag.key?(:options) ? render_options(tag[:options]) : ''
-      tag_opening = "<#{tag[:name]}#{options_line}>"
-      return tag_opening if UNPAIR_TAGS.include?(tag[:name])
-
-      tag_closing = "</#{tag[:name]}>"
-      tag_body = render_tag_body(tag[:tag_body])
-      "#{tag_opening}#{tag_body}#{tag_closing}"
+    def self.render(form_options, form_inner_content, model)
+      options = {
+        action: form_options.fetch(:url, '#'),
+        method: form_options.fetch(:method, 'post')
+      }
+      Tag.build(:form, options) { get_form_content(form_inner_content, model).join }
     end
 
-    private_class_method def self.render_options(options)
-      result_options = []
-      options.each_pair do |key, value|
-        result_options << (ATTRIBUTES_WITHOUT_VALUES.include?(key) ? key : "#{key}=\"#{value}\"")
+    private_class_method def self.get_form_content(form_inner_content, model)
+      form_inner_content.each_with_object([]) do |tag, content|
+        type = "InputTypes::#{tag[:options].fetch(:as, :string).capitalize}"
+        tag_options = tag[:options].except(:as)
+        content << InputTypes::Label.get_input(tag[:input_name], tag_options) unless tag[:input_name].equal?(:submit)
+        content << HexletCode.const_get(type).get_input(tag[:input_name], model, tag_options)
       end
-      result_options.empty? ? '' : " #{result_options.join(' ')}"
-    end
-
-    private_class_method def self.render_tag_body(tag_body)
-      return tag_body unless tag_body.is_a?(Array)
-
-      tag_body.map { |tag| render(tag) }.join
     end
   end
 end

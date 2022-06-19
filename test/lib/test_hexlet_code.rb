@@ -2,7 +2,7 @@
 
 require_relative './../test_helper'
 
-class TestHexletCode < Minitest::Test
+class TestHexletCode < TestCase
   SELECT_OPTIONS_WITH_VALUES = [['1', 'First select'], ['2', 'Second select'], ['3', 'Third select']].freeze
   SELECT_OPTIONS = %w[m f].freeze
   User = Struct.new(:name, :job, :gender, :hobby, keyword_init: true)

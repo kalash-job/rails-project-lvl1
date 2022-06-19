@@ -2,8 +2,6 @@
 
 module HexletCode
   class FormContent
-    DEFAULT_NAME = 'commit'
-    DEFAULT_VALUE = 'Save'
     attr_reader :model, :form_content
 
     def initialize(form_model)
@@ -12,14 +10,13 @@ module HexletCode
     end
 
     def input(input_name, options = {})
-      @form_content << InputTypes::Label.get_input(input_name, options)
-      type = "InputTypes::#{options.fetch(:as, :string).capitalize}"
-      @form_content << HexletCode.const_get(type).get_input(input_name, @model, options)
+      @form_content << { input_name: input_name, options: options }
     end
 
-    def submit(value = DEFAULT_VALUE, options = {})
-      options[:value] = value
-      @form_content << InputTypes::Submit.get_input(options)
+    def submit(value = nil, options = {})
+      submit_options = { as: :submit }
+      submit_options[:value] = value unless value.nil?
+      @form_content << { input_name: :submit, options: options.merge(submit_options) }
     end
   end
 end

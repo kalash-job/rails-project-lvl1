@@ -8,7 +8,7 @@ module HexletCode
       options = {
         action: form_options.fetch(:url, '#'),
         method: form_options.fetch(:method, 'post')
-      }
+      }.merge(form_options.except(:url, :method))
       Tag.build(:form, options) { get_form_content(form_inner_content).join }
     end
 

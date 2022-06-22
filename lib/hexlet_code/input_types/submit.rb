@@ -6,7 +6,7 @@ module HexletCode
       DEFAULT_NAME = 'commit'
       DEFAULT_VALUE = 'Save'
 
-      def self.get_input(input_name, _model, options = {})
+      def self.get_input(input_name, _input_value, options = {})
         input_options = {
           name: DEFAULT_NAME,
           type: input_name.to_s,

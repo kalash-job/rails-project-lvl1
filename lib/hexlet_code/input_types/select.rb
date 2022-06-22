@@ -3,13 +3,12 @@
 module HexletCode
   module InputTypes
     class Select
-      def self.get_input(input_name, model, options = {})
+      def self.get_input(input_name, input_value, options = {})
         input_options = {
           name: input_name,
           id: input_name
         }
-        selected_options = model.public_send(input_name).nil? ? [] : model.public_send(input_name)
-        select_options = options.key?(:options) ? get_select_options(options.fetch(:options), selected_options) : []
+        select_options = options.key?(:options) ? get_select_options(options.fetch(:options), input_value) : []
         Tag.build('select', input_options.merge(options.except(:options))) { select_options.join }
       end
 

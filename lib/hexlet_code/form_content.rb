@@ -10,7 +10,8 @@ module HexletCode
     end
 
     def input(input_name, options = {})
-      @form_content << { input_name: input_name, options: options }
+      input_value = model.public_send(input_name)
+      @form_content << { input_name: input_name, options: options, input_value: input_value }
     end
 
     def submit(value = nil, options = {})

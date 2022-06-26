@@ -17,8 +17,7 @@ module HexletCode
         type = "InputTypes::#{tag[:options].fetch(:as, :string).capitalize}"
         tag_options = tag[:options].except(:as)
         input_value = tag[:input_value]
-        content << InputTypes::Label.get_input(tag[:input_name], tag_options) unless tag[:input_name].equal?(:submit)
-        content << HexletCode.const_get(type).get_input(tag[:input_name], input_value, tag_options)
+        content << HexletCode.const_get(type).render(tag[:input_name], input_value, tag_options)
       end
     end
   end

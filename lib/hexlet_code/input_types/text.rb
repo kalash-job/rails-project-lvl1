@@ -2,11 +2,11 @@
 
 module HexletCode
   module InputTypes
-    class Text
+    class Text < Input
       DEFAULT_COLS_VALUE = '20'
       DEFAULT_ROWS_VALUE = '40'
 
-      def self.get_input(input_name, input_value, options = {})
+      def self.render_input(input_name, input_value, options = {})
         input_options = {
           cols: DEFAULT_COLS_VALUE,
           rows: DEFAULT_ROWS_VALUE,

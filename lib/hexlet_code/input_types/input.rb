@@ -15,7 +15,9 @@ module HexletCode
         Tag.build('label', input_options) { input_name.capitalize }
       end
 
-      def self.render_input(input_name, input_value, options = {}); end
+      def self.render_input(input_name, input_value, options = {})
+        raise NotImplementedError
+      end
     end
   end
 end

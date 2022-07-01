@@ -3,8 +3,6 @@
 require_relative './../test_helper'
 
 class TestHexletCode < TestCase
-  SELECT_OPTIONS_WITH_VALUES = [['1', 'First select'], ['2', 'Second select'], ['3', 'Third select']].freeze
-  SELECT_OPTIONS = %w[m f].freeze
   User = Struct.new(:name, :job, :gender, :hobby, keyword_init: true)
 
   def setup
@@ -42,11 +40,13 @@ class TestHexletCode < TestCase
   end
 
   def test_form_for_select
+    select_options = %w[m f]
+    select_options_with_values = [['1', 'First select'], ['2', 'Second select'], ['3', 'Third select']]
     expected = get_fixture('form_for_with_inputs_select.html')
     form = HexletCode.form_for @user do |f|
       f.input :name
-      f.input :hobby, as: :select, options: SELECT_OPTIONS_WITH_VALUES, multiple: true
-      f.input :gender, as: :select, class: 'form-control', options: SELECT_OPTIONS
+      f.input :hobby, as: :select, options: select_options_with_values, multiple: true
+      f.input :gender, as: :select, class: 'form-control', options: select_options
       f.submit 'Send', { name: 'sending' }
     end
     assert { form == expected }

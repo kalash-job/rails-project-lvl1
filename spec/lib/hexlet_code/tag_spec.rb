@@ -2,6 +2,7 @@
 
 require 'rspec'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'Tag' do
   describe '#build' do
     subject { HexletCode::Tag.build(tag_name, options) }
@@ -41,3 +42,4 @@ RSpec.describe 'Tag' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

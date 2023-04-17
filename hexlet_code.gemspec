@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = 'This gem allows you create forms in html using ruby'
   spec.homepage = 'https://github.com/kalash-job/rails-project-lvl1'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 3.0'
+  spec.required_ruby_version = '>= 3.1'
 
   spec.metadata['allowed_push_host'] = 'https://github.com/kalash-job/rails-project-lvl1'
 

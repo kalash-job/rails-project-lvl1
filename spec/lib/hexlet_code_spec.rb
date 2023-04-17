@@ -2,6 +2,7 @@
 
 require 'rspec'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'HexletCode' do
   before do
     user = Struct.new(:name, :job, :gender, :hobby, keyword_init: true)
@@ -71,3 +72,4 @@ RSpec.describe 'HexletCode' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

@@ -3,6 +3,10 @@ install:
 
 test:
 	bundle exec rake test
+	bundle exec rake spec
+
+rspec:
+	rspec spec --format documentation
 
 .PHONY: test
 

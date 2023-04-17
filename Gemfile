@@ -13,4 +13,8 @@ gem 'rubocop', '~> 1.21'
 
 group :test do
   gem 'minitest-power_assert'
+
+  gem 'rspec'
+
+  gem 'rspec-expectations'
 end

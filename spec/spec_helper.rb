@@ -14,8 +14,8 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 require './spec/fixtures_helper'
-require_relative './../lib/hexlet_code'
-require_relative './../lib/hexlet_code/tag'
+require_relative '../lib/hexlet_code'
+require_relative '../lib/hexlet_code/tag'
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

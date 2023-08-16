@@ -6,7 +6,7 @@ require 'hexlet_code'
 require 'minitest/autorun'
 require 'minitest-power_assert'
 
-class TestCase < MiniTest::Test
+class TestCase < Minitest::Test
   FIXTURES_FILES_PATH = '/fixtures/files/'
 
   def get_fixture(file_name)
